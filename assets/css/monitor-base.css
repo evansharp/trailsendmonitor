@@ -1,0 +1,15 @@
+.stealthy
+{
+    background: transparent;
+    border: none;
+}
+.table-action{
+	display: inline-block;
+	text-decoration: none;
+	color: inherit;
+	
+}
+
+input, textarea{
+	color: #333;
+}

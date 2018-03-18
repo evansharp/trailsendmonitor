@@ -1,0 +1,108 @@
+body {
+    color: #777;
+}
+
+/*
+This is the parent `<div>` that contains the menu and the content area.
+*/
+#layout {
+    position: relative;
+    left: 0;
+    padding-left: 0;
+}
+/*
+The content `<div>` is where all your content goes.
+*/
+#main {
+    margin: 0 auto;
+    padding: 0 2em;
+    max-width: 800px;
+    margin-bottom: 50px;
+    line-height: 1.6em;
+}
+
+
+
+/*
+The `#menu` `<div>` is the parent `<div>` that contains the `.pure-menu` that
+appears on the left side of the page.
+*/
+
+#menu {
+    margin-left: 0;
+    width: 220px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 1000; /* so the menu or its navicon stays above all content */
+    background: #191818;
+    overflow-y: auto;
+}
+    /*
+    All anchors inside the menu should be styled like this.
+    */
+    #menu a {
+        color: #999;
+        border: none;
+        padding: 0.6em 0 0.6em 0.6em;
+    }
+
+    /*
+    Remove all background/borders, since we are applying them to #menu.
+    */
+     #menu .pure-menu,
+     #menu .pure-menu ul {
+        border: none;
+        background: transparent;
+    }
+
+    /*
+    Add that light border to separate items into groups.
+    */
+    #menu .pure-menu ul,
+    #menu .pure-menu .menu-item-divided {
+        border-top: 1px solid #333;
+    }
+        /*
+        Change color of the anchor links on hover/focus.
+        */
+        #menu .pure-menu a:hover,
+        #menu .pure-menu a:focus{
+            background: transparent;
+            color: #fefefe;
+        }
+        #menu .pure-menu li.active a{
+            background: #333;
+        }
+
+    #menu .pure-menu li .fa-fw {
+        margin-right: 11px;
+    }
+
+    /*
+    This styles the menu heading.
+    */
+    #menu .pure-menu-heading {
+        background: #1f8dd6 !important;
+        font-size: 110%;
+        color: #fff;
+        margin: 0;
+    }
+    
+    /* This is for the js accordion menu */
+    #menu .pure-menu .pure-menu-has-children .pure-menu-item-children{
+        display: none;
+        list-style-type: none;
+    }
+    .pure-menu-has-children:hover>.pure-menu-link:after{
+        content: "\25BE";
+    }
+    
+    
+    #menu .pure-menu .pure-menu-item .pure-menu-item-children,
+    #menu .pure-menu li.active .pure-menu-item-children,
+    #menu .pure-menu .pure-menu-item .pure-menu-item-children a,
+    #menu .pure-menu li.active .pure-menu-item-children a{
+        background: #252323;
+    }

@@ -1,0 +1,7 @@
+# Flag for Yocotuce API
+php_flag "allow_url_fopen" "On"
+
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php/$1 [L]

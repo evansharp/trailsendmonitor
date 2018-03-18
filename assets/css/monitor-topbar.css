@@ -1,0 +1,86 @@
+#topbar{
+	width: 100%;
+	height: 43px;
+	margin: 0;
+	background: #191818; /* match sidebar */
+	
+}
+
+/* reset some layout styles */
+#topbar ul, #topbar li{
+	margin: 0;
+	list-style-type: none;
+	padding: 0;
+}
+
+#topbar ul{
+	margin-right: 1.1em;
+}
+
+#topbar li a{
+	color: #999;
+  padding: 0.6em;
+	font-size: 110%;
+	text-decoration: none;
+	float: right;
+}
+#topbar li a:hover{
+	background: #333;
+	color: #fefefe;
+}
+
+#topbar li > ul{
+	display: none;
+}
+
+#alerts{
+	position: relative;
+}
+#alerts-list{
+	position: absolute;
+	width: 300px;
+	right: 0;
+	top: 44px;
+	
+}
+#topbar li a.alert-item{
+	display: block;
+	padding: 25px 20px 25px 10px;
+	background: #f0eeee;
+	position: relative;
+	width: 300px;
+}
+
+#topbar li a.alert-item:hover{
+	background: #d4d4d4;
+	color: #333;
+}
+.alert-item span{
+	position: absolute;
+	bottom: 2px;
+	right: 5px;
+	font-size: 80%;
+}
+.alert-item .fa{
+	margin-right: 10px;
+	float: left;
+}
+
+.alert-item-info{
+	border-left: 8px solid #1f8dd6;
+}
+.alert-item-info .fa{
+	color: #1f8dd6;
+}
+.alert-item-warning{
+	border-left: 8px solid #eecc43;
+}
+.alert-item-warning .fa{
+	color: #eecc43;
+}
+.alert-item-danger{
+	border-left: 8px solid red;
+}
+.alert-item-danger .fa{
+	color: red;
+}
