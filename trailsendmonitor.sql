@@ -56,7 +56,7 @@ CREATE TABLE `streams` (
 --
 
 INSERT INTO `streams` (`id`, `name`, `description`, `device-serial`) VALUES
-(7, 'test', 'nope', 'test2');
+(7, 'Test', 'A fake device to test with', 't1000');
 
 --
 -- Indexes for dumped tables
