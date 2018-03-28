@@ -8,16 +8,17 @@ $route['translate_uri_dashes'] = FALSE;
 $route['assets/(:any)'] = 'assets/$1';
 
 
-// Panel screens 
+// Panel screens
 $route['streams'] = 'panel/streams';
 	$route['streams/create'] = 'panel/create_stream';
 	$route['stream/edit/(:num)'] = 'panel/edit_stream/$1';
 	$route['stream/delete/(:num)'] = 'panel/delete_stream/$1';
-	
+	$route['stream/raw/(:num)'] = 'panel/view_raw_stream/$1';
+
 $route['relations'] = 'panel/relations';
 	$route['relations/create'] = 'panel/create_relations';
 	$route['relations/edit'] = 'panel/edit_relations';
-	
+
 $route['alerts'] = 'panel/alerts';
 $route['settings'] = 'panel/settings';
 

@@ -1,5 +1,4 @@
-.stealthy
-{
+.stealthy{
     background: transparent;
     border: none;
 }
@@ -7,9 +6,18 @@
 	display: inline-block;
 	text-decoration: none;
 	color: inherit;
-	
 }
 
+form{
+    width: 100%;
+}
 input, textarea{
 	color: #333;
+}
+
+.align-right{
+    text-align: right;
+}
+.align-left{
+    text-align: left;
 }

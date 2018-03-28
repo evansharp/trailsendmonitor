@@ -14,9 +14,9 @@ This is the parent `<div>` that contains the menu and the content area.
 The content `<div>` is where all your content goes.
 */
 #main {
-    margin: 0 auto;
+    margin: 0 0 50px 240px; /* margin out from left for sidebar */
     padding: 0 2em;
-    max-width: 800px;
+    max-width: 90%;
     margin-bottom: 50px;
     line-height: 1.6em;
 }
@@ -89,7 +89,7 @@ appears on the left side of the page.
         color: #fff;
         margin: 0;
     }
-    
+
     /* This is for the js accordion menu */
     #menu .pure-menu .pure-menu-has-children .pure-menu-item-children{
         display: none;
@@ -98,8 +98,8 @@ appears on the left side of the page.
     .pure-menu-has-children:hover>.pure-menu-link:after{
         content: "\25BE";
     }
-    
-    
+
+
     #menu .pure-menu .pure-menu-item .pure-menu-item-children,
     #menu .pure-menu li.active .pure-menu-item-children,
     #menu .pure-menu .pure-menu-item .pure-menu-item-children a,

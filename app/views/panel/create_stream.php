@@ -2,7 +2,7 @@
 	<div class="pure-u-1-3"></div>
 	<div class="pure-u-1-3"></div>
 	<div class="pure-u-1-3"><h2>Create a Stream</h2></div>
-	
+
 	<form class="pure-form" method="post" action="<?php echo base_url(); ?>streams/create">
 		<div class="pure-u-1-3"></div>
 		<div class="pure-u-1-3">
@@ -17,10 +17,10 @@
 		<div class="pure-u-1-3"></div>
 		<div class="pure-u-1-3"></div>
 		<div class="pure-u-1-3">
-			
+
 				<button type="submit" class="pure-button pure-button-primary">Create Stream</button>
-			
+
 		</div>
 		<div class="pure-u-1-3"></div>
-		
+
 </div>
