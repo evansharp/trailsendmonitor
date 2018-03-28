@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Mar 18, 2018 at 10:30 PM
+-- Generation Time: Mar 28, 2018 at 08:09 AM
 -- Server version: 5.7.21-0ubuntu0.16.04.1
--- PHP Version: 7.0.22-0ubuntu0.16.04.1
+-- PHP Version: 7.0.28-0ubuntu0.16.04.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -29,14 +29,12 @@ USE `trailsendmonitor`;
 --
 
 DROP TABLE IF EXISTS `data`;
-CREATE TABLE IF NOT EXISTS `data` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `data` (
+  `id` int(11) NOT NULL,
   `stream-id` int(11) NOT NULL,
-  `timestamp` int(11) NOT NULL,
+  `timestamp` datetime NOT NULL,
   `label` varchar(6) NOT NULL,
-  `value` float NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `stream-id` (`stream-id`)
+  `value` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -46,13 +44,12 @@ CREATE TABLE IF NOT EXISTS `data` (
 --
 
 DROP TABLE IF EXISTS `streams`;
-CREATE TABLE IF NOT EXISTS `streams` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `streams` (
+  `id` int(11) NOT NULL,
   `name` varchar(50) DEFAULT NULL,
   `description` varchar(256) DEFAULT NULL,
-  `device-serial` varchar(50) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+  `device-serial` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `streams`
@@ -61,6 +58,40 @@ CREATE TABLE IF NOT EXISTS `streams` (
 INSERT INTO `streams` (`id`, `name`, `description`, `device-serial`) VALUES
 (7, 'test', 'nope', 'test2');
 
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `data`
+--
+ALTER TABLE `data`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `stream-id` (`stream-id`),
+  ADD KEY `timestamp` (`timestamp`),
+  ADD KEY `label` (`label`);
+
+--
+-- Indexes for table `streams`
+--
+ALTER TABLE `streams`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `name` (`name`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `data`
+--
+ALTER TABLE `data`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `streams`
+--
+ALTER TABLE `streams`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- Constraints for dumped tables
 --
