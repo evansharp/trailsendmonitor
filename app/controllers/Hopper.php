@@ -65,7 +65,7 @@ class Hopper extends MY_Controller {
 
                   	// Volts -------------
 
-                  	$frame_voltage = $sensor.get_signalValue() * 1000 //convert direct reading in mV to V
+                  	$frame_voltage = $sensor.get_signalValue() * 1000; //convert direct reading in mV to V
 
                   	// Amps --------------
 
