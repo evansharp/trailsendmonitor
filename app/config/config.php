@@ -5,7 +5,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 //$config['base_url'] = 'https://evansharp.ca/trailsendmonitor/';
 
 //local implementation
-$config['base_url'] = 'http://localhost/github/trailsendmonitor/';
+$config['base_url'] = '/trailsendmonitor/';
 
 
 $config['index_page'] = 'index.php';
