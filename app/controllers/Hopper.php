@@ -19,7 +19,7 @@ class Hopper extends MY_Controller {
 		// get registered streams from the db
 		$streams_model = new Streams_model();
 		$streamlist = $streams_model->get_all_streams();
-		
+
 
         $data = isset( $_POST ) ? $_POST : NULL;
 
@@ -37,12 +37,12 @@ class Hopper extends MY_Controller {
 				$stream_id = null;
 
 				foreach( $streamlist as $stream){
-					if( $stream['device-serial'] == $device_serial){
+					if( $stream['device-serial'] == $device_serial &&  !$stream['disabled']){
 						$stream_id = $stream['id'];
 					}
 				}
 
-				// if device is unregistered, skip to the next device
+				// if device is unregistered or disabled, skip to the next device
 				if( !$stream_id ){
 					$sensor = $sensor -> nextGenericSensor();
 					continue;

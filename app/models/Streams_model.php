@@ -45,9 +45,12 @@ class Streams_model extends CI_Model {
         }
 
         public function toggle_stream( $id ){
-            $data = ['disabled' => '!disabled'];
-            $this->db->where('id', $id);
-            return $this->db->update('streams', $data);
+
+            return $this->db->query("
+                                    UPDATE streams
+                                    SET `disabled`=NOT `disabled`
+                                    WHERE `id` = $id
+                                    ");
         }
 
 
