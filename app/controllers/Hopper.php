@@ -16,76 +16,77 @@ class Hopper extends MY_Controller {
 
 	}
 
-      // main input function, device serial number should be part of callback URI
-      // "debug" URI for viewing posted data
-
-	public function _remap( $device_serial ){
-		// get the existing streams from the db
+	public function post(){
+		// get registered streams from the db
 		$streams_model = new Streams_model();
 		$streamlist = $streams_model->get_all_streams();
 
-            $data = isset( $_POST ) ? $_POST : NULL;
 
-            if( $device_serial == "debug" ){
-                  if( $data ){
-	                  	echo "<pre>";
-                        foreach ($data as $key => $value) {
-                              echo "$key = $value\r\n";
-                        }
-                        echo "</pre>";
-                  }else{
-                        echo "No POST data found.";
-                  }
-            }else{
-            	$stream_id = null;
+        $data = isset( $_POST ) ? $_POST : NULL;
 
-            	//validate module sending data against known streams
-            	foreach( $streamlist as $stream){
-            		if($stream['device-serial'] == $device_serial){
-            			$stream_id = $stream['id'];
-            		}
-            	}
+		//get the first available sensor
+		$sensor = YGenericSensor.yFirstGenericSensor();
 
-            	//abort if no stream id
-            	if(!$stream_id){
-            		die("Device serial \"$device_serial\" not registered in Monitor");
-            	}
+		//iterator to process all sensors
+		while( $sensor ){
+			$device_name = explode( ".", $sensor.get_friendlyName() )[0]; //get the first segment of the return string
+			$device_serial = explode( ".", $sensor.get_hardwareId() )[0]; //get the first segment of the return string
 
-            	if( $data ){
-                  	// do stuff with stream here
+			//validate module sending data against known streams using hardware id
+			$stream_id = null;
+			foreach( $streamlist as $stream){
+				if($stream['device-serial'] == $device_serial){
+					$stream_id = $stream['id'];
+				}
+			}
+			// if device is unregistered, skip to the next device
+			if( !$stream_id ){
+				continue;
+			}
 
-                  	// yGenericSensor methods are:
-                  	// get_signalValue() = module measurment in mV
-                  	// get_currentValue() = amperage at 12v as calculated by device and configured in VirtualHub
+			if( $data ){
+				// useful yGenericSensor methods are:
+				// get_signalValue() = module measurment in mV
+				// get_currentValue() = amperage at 12v as calculated by device and configured in VirtualHub
 
-                  	$sensor = yFindGenericSensor("$device_serial.genericSensor1");
+				//create a 'now' in mysql Datetime format
+				$now = date('Y-m-d H:i:s'); // will manually write time stamp so value are "same time" over two writes.
 
-					//create a 'now' in mysql Datetime format
-                  	$now = date('Y-m-d H:i:s'); // will manually write time stamp so value are "same time" over two writes.
+				// Volts -------------
 
-                  	// Volts -------------
+				$frame_voltage = $sensor.get_signalValue() * 1000; //convert direct reading in mV to V
 
-                  	$frame_voltage = $sensor.get_signalValue() * 1000; //convert direct reading in mV to V
+				// Amps --------------
 
-                  	// Amps --------------
-
-                  	$frame_amperage = $sensor.getcurrentValue(); // as configured in VirtualHub
+				$frame_amperage = $sensor.getcurrentValue(); // as configured in VirtualHub
 
 
-                  	// Write!
+				// Write to DB!
+				$streams_model -> write_frame( $stream_id, $now, 'volts', $frame_voltage );
+				$streams_model -> write_frame( $stream_id, $now, 'amps', $frame_amperage );
 
-                  	if( !$streams_model -> write_frame( $stream_id, $now, 'volts', $frame_voltage ) ){
-	                  	die("There was an error writing VOLTS to the database.");
-                  	}
+			  }else{
+				die("Device serial \"$device_serial\" is registered, but not POST data received");
+			  }
 
-                  	if( !$streams_model -> write_frame( $stream_id, $now, 'amps', $frame_amperage ) ){
-	                  	die("There was an error writing AMPS to the database.");
-                  	}
+			//get the next available sensor or a null pointer if the last one is done
+			$sensor = YGenericSensor.nextGenericSensor();
+		}
 
-
-                  }else{
-                  	die("Device serial \"$device_serial\" is registered, but not POST data received");
-                  }
-            }
 	}
+
+	public function debug(){
+        $data = isset( $_POST ) ? $_POST : NULL;
+
+		if( $data ){
+		  	echo "<pre>";
+		    foreach ($data as $key => $value) {
+		          echo "$key = $value\r\n";
+		    }
+		    echo "</pre>";
+		}else{
+		    echo "No POST data found.";
+		}
+	}
+
 }
