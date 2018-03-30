@@ -61,18 +61,33 @@ class Hopper extends MY_Controller {
 				$frame_amperage = $sensor.getcurrentValue(); // as configured in VirtualHub
 
 
-				// Write to DB!
-				$streams_model -> write_frame( $stream_id, $now, 'volts', $frame_voltage );
-				$streams_model -> write_frame( $stream_id, $now, 'amps', $frame_amperage );
+				// Write to db!
 
-			  }else{
+				if( !$streams_model -> write_frame( $stream_id, $now, 'volts', $frame_voltage ) ){
+					die("There was an error writing VOLTS of ". $device_name ." to the database.");
+				}else{
+					echo "Wrote " . $frame_voltage ." V to the database for ". $device_name . " (". $device_serial .") at ". $now;
+				}
+
+				if( !$streams_model -> write_frame( $stream_id, $now, 'amps', $frame_amperage ) ){
+					die("There was an error writing AMPS of ". $device_name ."  to the database.");
+				}else{
+					echo "Wrote " . $frame_amperage ." A to the database for ". $device_name . " (". $device_serial .") at ". $now;
+				}
+
+
+			}else{
 				die("Device serial \"$device_serial\" is registered, but not POST data received");
-			  }
-
+			}
+			echo "<br>";
+			echo "--------------------------------------------------------";
+			echo "<br>";
+			
 			//get the next available sensor or a null pointer if the last one is done
 			$sensor = YGenericSensor.nextGenericSensor();
 		}
 
+		echo "Success!";
 	}
 
 	public function debug(){
