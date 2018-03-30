@@ -6,8 +6,13 @@
 <div class="pure-g">
 	<form action="<?php echo base_url(); ?>stream/raw/<?php echo $stream['id']; ?>" method="post">
 
-	<div class="pure-u-1-3">Start Time: <input name="raw_fetch_start_time" type="datetime-local"  autocomplete required></div>
-	<div class="pure-u-1-3">End Time: <input name="raw_fetch_end_time" type="datetime-local" autocomplete required></div>
+	<div class="pure-u-1-3">
+		Start Time: <input name="raw_fetch_start_time" type="datetime-local"  autocomplete required value="<?php if(isset( $range['start'] )) echo $range['start']; ?>">
+	</div>
+	<div class="pure-u-1-3">
+		End Time: <input name="raw_fetch_end_time" type="datetime-local" autocomplete required value="<?php if(isset($range['end'])) echo $range['end']; ?>">
+		<button id="#fillnow" class="pure-button">Now</button>
+	</div>
 	<div class="pure-u-1-3">
 		<select name="label" class="pure-input-1">
 			<option value="volts">Volts</option>
@@ -19,15 +24,7 @@
 	</form>
 </div>
 <div class="pure-g">
-	<?php if( $range ):?>
-		
-		<div class="pure-u-1-3"><?php echo $range['start']; ?></div>
-		<div class="pure-u-1-3"><?php echo $range['end']; ?></div>
-		<div class="pure-u-1-3"></div>
-
-	<?php endif;
-
-
+	<?php
 	// if the range selection has been done, print the data in a tabel
 	if( $raw_data ): ?>
 	<br>

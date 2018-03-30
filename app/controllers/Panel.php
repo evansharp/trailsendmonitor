@@ -99,11 +99,13 @@ class Panel extends MY_Controller {
 		$data['stream'] = $model -> get_stream_by_id( $id );
 
 		if(  isset($_POST['raw_fetch_start_time']) && isset($_POST['raw_fetch_end_time']) && isset($_POST['label']) ){
-			$start_time = date("Y-m-d H:i:s",strtotime( $_POST['raw_fetch_start_time'] )); //format for mysql query
-			$end_time = date("Y-m-d H:i:s",strtotime( $_POST['raw_fetch_end_time'] )); //format for mysql query
+
+			$start_time = date("Y-m-d H:i:s", strtotime( $_POST['raw_fetch_start_time'] )); //format for mysql query
+			$end_time = date("Y-m-d H:i:s", strtotime( $_POST['raw_fetch_end_time'] )); //format for mysql query
+
 			$data['raw_data'] = $model -> get_raw_stream( $id, $_POST['label'], $start_time, $end_time );
-			$data['range']['start'] = $start_time;
-			$data['range']['end'] = $end_time;
+			$data['range']['start'] = $_POST['raw_fetch_start_time'];
+			$data['range']['end'] = $_POST['raw_fetch_end_time'];
 		}else{
 			$data['raw_data'] = [];
 			$data['range'] = [];
