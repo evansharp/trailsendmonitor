@@ -106,6 +106,7 @@ class Panel extends MY_Controller {
 			$data['raw_data'] = $model -> get_raw_stream( $id, $_POST['label'], $start_time, $end_time );
 			$data['range']['start'] = $_POST['raw_fetch_start_time'];
 			$data['range']['end'] = $_POST['raw_fetch_end_time'];
+			$data['result_label'] = $_POST['label'];
 		}else{
 			$data['raw_data'] = [];
 			$data['range'] = [];
@@ -122,6 +123,13 @@ class Panel extends MY_Controller {
 		$this->load->view('panel', $template_data);
 	}
 
+	public function toggle_stream( $stream_id ){
+		$model = new Streams_model();
+		$result = $model -> toggle_stream( $stream_id );
+
+		redirect( base_url("streams") );
+
+	}
 
 
 	/* ===========================================================

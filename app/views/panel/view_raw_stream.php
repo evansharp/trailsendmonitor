@@ -27,9 +27,10 @@
 	<?php
 	// if the range selection has been done, print the data in a tabel
 	if( $raw_data ): ?>
-	<br>
-	<br>
-	<br>
+	<div class="pure-u-1-3"><h3> <?php echo ucfirst($result_label); ?> Data</h3></div>
+	<div class="pure-u-1-3"></div>
+	<div class="pure-u-1-3"></div>
+
 	<div class="pure-u-1">
 		<table class="pure-table pure-table-horizontal">
 			<thead>
@@ -42,11 +43,13 @@
 			<?php foreach($raw_data as $datum):?>
 
 				<tr>
-					<td><?php echo $datum['timestamp'];?></td>
+					<td><?php echo date(DATE_RFC2822, strtotime( $datum['timestamp']));?></td>
 					<td><?php echo $datum['value'];?></td>
 				</tr>
 
-			<?php endforeach;?>
+			<?php
+			//("F j, Y, g:i:s a"
+		endforeach;?>
 			</tbody>
 		</table>
 	</div>

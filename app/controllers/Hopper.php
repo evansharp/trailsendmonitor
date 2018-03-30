@@ -19,7 +19,7 @@ class Hopper extends MY_Controller {
 		// get registered streams from the db
 		$streams_model = new Streams_model();
 		$streamlist = $streams_model->get_all_streams();
-
+		
 
         $data = isset( $_POST ) ? $_POST : NULL;
 
