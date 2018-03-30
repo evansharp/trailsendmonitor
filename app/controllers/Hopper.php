@@ -54,10 +54,12 @@ class Hopper extends MY_Controller {
 				// Volts -------------
 
 				$frame_voltage = $sensor -> get_signalValue() * 1000; //convert direct reading in mV to V
+				echo "Found " . $frame_voltage ." V for ". $device_name . " (". $device_serial .")";
 
 				// Amps --------------
 
 				$frame_amperage = $sensor -> getcurrentValue(); // as configured in VirtualHub
+				echo "Found " . $frame_amperage ." A for ". $device_name . " (". $device_serial .")";
 
 
 				// Write to db!
@@ -87,7 +89,7 @@ class Hopper extends MY_Controller {
 		}
 
 		echo "Success!";
-		
+
 		YAPI::FreeAPI();
 	}
 
