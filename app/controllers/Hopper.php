@@ -28,8 +28,8 @@ class Hopper extends MY_Controller {
 
 		//iterator to process all sensors
 		while( $sensor ){
-			$device_name = explode( ".", $sensor.get_friendlyName() )[0]; //get the first segment of the return string
-			$device_serial = explode( ".", $sensor.get_hardwareId() )[0]; //get the first segment of the return string
+			$device_name = explode( ".", $sensor -> get_friendlyName() )[0]; //get the first segment of the return string
+			$device_serial = explode( ".", $sensor -> get_hardwareId() )[0]; //get the first segment of the return string
 
 			//validate module sending data against known streams using hardware id
 			$stream_id = null;
@@ -53,11 +53,11 @@ class Hopper extends MY_Controller {
 
 				// Volts -------------
 
-				$frame_voltage = $sensor.get_signalValue() * 1000; //convert direct reading in mV to V
+				$frame_voltage = $sensor -> get_signalValue() * 1000; //convert direct reading in mV to V
 
 				// Amps --------------
 
-				$frame_amperage = $sensor.getcurrentValue(); // as configured in VirtualHub
+				$frame_amperage = $sensor -> getcurrentValue(); // as configured in VirtualHub
 
 
 				// Write to db!
@@ -87,6 +87,8 @@ class Hopper extends MY_Controller {
 		}
 
 		echo "Success!";
+		
+		YAPI::FreeAPI();
 	}
 
 	public function debug(){
