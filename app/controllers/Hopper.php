@@ -25,7 +25,7 @@ class Hopper extends MY_Controller {
         $data = isset( $_POST ) ? $_POST : NULL;
 
 		//get the first available sensor
-		$sensor = YGenericSensor.yFirstGenericSensor();
+		$sensor = YGenericSensor::yFirstGenericSensor();
 
 		//iterator to process all sensors
 		while( $sensor ){
@@ -82,9 +82,9 @@ class Hopper extends MY_Controller {
 			echo "<br>";
 			echo "--------------------------------------------------------";
 			echo "<br>";
-			
+
 			//get the next available sensor or a null pointer if the last one is done
-			$sensor = YGenericSensor.nextGenericSensor();
+			$sensor = YGenericSensor::nextGenericSensor();
 		}
 
 		echo "Success!";
