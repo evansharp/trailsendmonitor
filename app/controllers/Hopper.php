@@ -23,8 +23,8 @@ class Hopper extends MY_Controller {
 
         $data = isset( $_POST ) ? $_POST : NULL;
 
-		//get the first available sensor
-		$sensor = YGenericSensor::FirstGenericSensor();
+		//get the first available sensor to initiate an iterator in the API
+		$sensor = YGenericSensor::yFirstGenericSensor();
 
 		//iterator to process all sensors
 		while( $sensor ){
@@ -58,7 +58,7 @@ class Hopper extends MY_Controller {
 
 				// Amps --------------
 
-				$frame_amperage = $sensor -> getcurrentValue(); // as configured in VirtualHub
+				$frame_amperage = $sensor -> get_currentValue(); // as configured in VirtualHub
 				echo "Found " . $frame_amperage ." A for ". $device_name . " (". $device_serial .")";
 
 
