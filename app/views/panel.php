@@ -3,19 +3,19 @@
 <head>
 	<meta charset="utf-8">
 	<title><?php echo $title;?> - Trail's End Monitor</title>
-	
+
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	
+
 	<link rel="stylesheet" href="<?php echo assets_url();?>css/libs/purecss/pure-min.css">
 	<link rel="stylesheet" href="<?php echo assets_url();?>css/libs/font-awesome.min.css">
-	
+
 	<link rel="stylesheet" href="<?php echo assets_url();?>css/monitor-base.css?v=<?php echo time();?>">
 	<link rel="stylesheet" href="<?php echo assets_url();?>css/pure-side-bar.css?v=<?php echo time();?>">
 	<link rel="stylesheet" href="<?php echo assets_url();?>css/monitor-topbar.css?v=<?php echo time();?>">
 </head>
 
 <body>
-	
+
 	<div id="layout">
 
     <div id="menu">
@@ -36,12 +36,12 @@
                 	    <li class="pure-menu-item">
                 	        <a href="<?php echo base_url(); ?>streams/create" class="pure-menu-link">
                 		        Create Stream
-                	        </a>    
+                	        </a>
                 	    </li>
                 	    <!--<li class="pure-menu-item">
                 	        <a href="<?php echo base_url(); ?>streams/edit" class="pure-menu-link">
                 		        Edit Streams
-                	        </a>    
+                	        </a>
                 	    </li>-->
                 	</ul>
                 </li>
@@ -53,12 +53,12 @@
                 	    <li class="pure-menu-item">
                 	        <a href="<?php echo base_url(); ?>relations/create" class="pure-menu-link">
                 		        Create Relation
-                	        </a>    
+                	        </a>
                 	    </li>
                 	    <li class="pure-menu-item">
                 	        <a href="<?php echo base_url(); ?>relations/edit" class="pure-menu-link">
                 		        Edit Relations
-                	        </a>    
+                	        </a>
                 	    </li>
                 	</ul>
                 </li>
@@ -95,10 +95,10 @@
     					               $faicon = 'bomb';
     					               break;
     					        }
-    					        
-    					        
+
+
     						    echo "<li>
-                                    <a class='alert-item alert-item-$item[0]' href='$item[3]'> 
+                                    <a class='alert-item alert-item-$item[0]' href='$item[3]'>
                                         <i class='fa fa-2x fa-fw fa-$faicon'></i>
                                         $item[1] <span>$item[2]</span>
                                     </a></li>";
@@ -107,22 +107,21 @@
     						echo '<li><a class="alert-item" href="#"> No Alerts! </a></li>';
     					}
     				?>
-    					
+
     			</ul>
     		</li>
     	</ul>
     </nav>
     <div id="main">
 		<?php echo $pane; ?>
-		
-	
-		
+
+
+
 	</div> <!-- end #main -->
 	</div> <!-- end #layout -->
 
         <script src="<?php echo assets_url(); ?>js/libs/jquery-3.2.1.min.js"></script>
-		<script src="<?php echo assets_url(); ?>js/main.js?<?php echo time();?>"></script>
+		<script src="<?php echo assets_url(); ?>js/main.js?v=<?php echo time();?>"></script>
     </body>
 
 </html>
-

@@ -11,7 +11,7 @@
 	</div>
 	<div class="pure-u-1-3">
 		End Time: <input name="raw_fetch_end_time" type="datetime-local" autocomplete required value="<?php if(isset($range['end'])) echo $range['end']; ?>">
-		<button id="#fillnow" class="pure-button">Now</button>
+		<button id="fillnow" class="pure-button">Now</button>
 	</div>
 	<div class="pure-u-1-3">
 		<select name="label" class="pure-input-1">

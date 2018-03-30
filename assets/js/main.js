@@ -17,7 +17,10 @@ $(function(){
 	});
 
 	//enable 'now' button in raw data view_alerts
-	$('#fillnow').click(function(){
-		$('["name"]=raw_fetch_end_time').val( new Date().toJASON().slice(0,19) );
+	$('#fillnow').click(function(e){
+		e.preventDefault();
+		alert(new Date().toJSON().slice(0,19));
+		$('input[name=raw_fetch_end_time]').val( new Date().toJSON().slice(0,19) );
+
 	});
 });

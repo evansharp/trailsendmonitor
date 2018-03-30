@@ -25,15 +25,15 @@
 				<td><?php echo $stream['description'];?></td>
 				<td><?php echo $stream['device-serial'];?></td>
 				<td>
-					<a href='<?php echo base_url(); ?>stream/delete/<?php echo $stream['id']; ?>' class='table-action delete-stream'> <i class='fa fa-fw fa-lg fa-trash-o'></i> </a>
-					<a href='<?php echo base_url(); ?>stream/edit/<?php echo $stream['id']; ?>' class='table-action'>  <i class='fa fa-fw fa-lg fa-pencil'></i> </a>
-					<a href='<?php echo base_url(); ?>stream/raw/<?php echo $stream['id']; ?>' class='table-action'>  <i class='fa fa-fw fa-lg fa-table'></i> </a>
+					<a href='<?php echo base_url(); ?>stream/delete/<?php echo $stream['id']; ?>' class='table-action delete-stream' title="Delete"> <i class='fa fa-fw fa-lg fa-trash-o'></i> </a>
+					<a href='<?php echo base_url(); ?>stream/edit/<?php echo $stream['id']; ?>' class='table-action' title="Edit">  <i class='fa fa-fw fa-lg fa-pencil'></i> </a>
+					<a href='<?php echo base_url(); ?>stream/raw/<?php echo $stream['id']; ?>' class='table-action' title="View Raw Data">  <i class='fa fa-fw fa-lg fa-table'></i> </a>
 					<?php if($stream['disabled']){
 						$toggle_position = "toggle-off";
 					}else{
 						$toggle_position = "toggle-on";
 					}?>
-					<a href='<?php echo base_url(); ?>stream/toggle/<?php echo $stream['id']; ?>' class='table-action'>  <i class='fa fa-fw fa-lg fa-<?php echo $toggle_position; ?>'></i> </a>
+					<a href='<?php echo base_url(); ?>stream/toggle/<?php echo $stream['id']; ?>' class='table-action' title="Enable/ Disable">  <i class='fa fa-fw fa-lg fa-<?php echo $toggle_position; ?>'></i> </a>
 				</td>
 				</tr>
 			<?php endforeach;?>
