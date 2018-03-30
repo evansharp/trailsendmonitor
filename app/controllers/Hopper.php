@@ -5,14 +5,14 @@ class Hopper extends MY_Controller {
 
 	public function construct(){
 		parent::__construct();
+	}
 
+	public function post(){
 		//include yoctopuce libraries for recieving and processing data
 
 		include APPPATH . 'third_party/yocto_api.php';
 		include APPPATH . 'third_party/yocto_genericsensor.php';
-	}
 
-	public function post(){
 		// init YAPI in callback mode to recieve inputs
 		YAPI::RegisterHub("callback");
 
