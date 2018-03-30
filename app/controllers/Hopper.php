@@ -24,7 +24,7 @@ class Hopper extends MY_Controller {
         $data = isset( $_POST ) ? $_POST : NULL;
 
 		//get the first available sensor
-		$sensor = YGenericSensor::yFirstGenericSensor();
+		$sensor = YGenericSensor::FirstGenericSensor();
 
 		//iterator to process all sensors
 		while( $sensor ){
