@@ -29,24 +29,24 @@ class Hopper extends MY_Controller {
 		//iterator to process all sensors
 		while( !is_null( $sensor ) ){
 			if( $sensor -> isOnline() ){
-				$device_name = explode( ".", $sensor -> get_friendlyName() )[0]; //get the first segment of the return string
-				$device_serial = explode( ".", $sensor -> get_hardwareId() )[0]; //get the first segment of the return string
+				$device_name = explode( ".", explode( "-", $sensor -> get_friendlyName() )[0] )[0]; //get the first segment of the return string
+				$device_serial = explode( ".", explode( "-", $sensor -> get_hardwareId() )[1] )[0]; //get the first segment of the return string
+				//die("Device Name: " . $device_name . " | Device Serial: ". $device_serial);
 
 				//validate module sending data against known streams using hardware id
 				$stream_id = null;
+
 				foreach( $streamlist as $stream){
-					if($stream['device-serial'] == $device_serial){
+					if( $stream['device-serial'] == $device_serial){
 						$stream_id = $stream['id'];
 					}
 				}
+
 				// if device is unregistered, skip to the next device
 				if( !$stream_id ){
+					$sensor = $sensor -> nextGenericSensor();
 					continue;
 				}
-
-				// useful yGenericSensor methods are:
-				// get_signalValue() = module measurment in mV
-				// get_currentValue() = amperage at 12v as calculated by device and configured in VirtualHub
 
 				//create a 'now' in mysql Datetime format
 				$now = date('Y-m-d H:i:s'); // will manually write time stamp so value are "same time" over two writes.
@@ -54,12 +54,12 @@ class Hopper extends MY_Controller {
 				// Volts -------------
 
 				$frame_voltage = $sensor -> get_signalValue() * 1000; //convert direct reading in mV to V
-				echo "Found " . $frame_voltage ." V for ". $device_name . " (". $device_serial .")";
+				//echo "Found " . $frame_voltage ." V for ". $device_name . " (". $device_serial .")";
 
 				// Amps --------------
 
 				$frame_amperage = $sensor -> get_currentValue(); // as configured in VirtualHub
-				echo "Found " . $frame_amperage ." A for ". $device_name . " (". $device_serial .")";
+				//echo "Found " . $frame_amperage ." A for ". $device_name . " (". $device_serial .")";
 
 
 				// Write to db!
@@ -81,7 +81,7 @@ class Hopper extends MY_Controller {
 				echo "<br>";
 
 				//get the next available sensor or a null pointer if the last one is done
-				$sensor = YGenericSensor::nextGenericSensor();
+				$sensor = $sensor -> nextGenericSensor();
 			}
 		}
 
