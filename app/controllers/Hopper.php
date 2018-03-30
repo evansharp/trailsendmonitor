@@ -10,13 +10,12 @@ class Hopper extends MY_Controller {
 
 		include APPPATH . 'third_party/yocto_api.php';
 		include APPPATH . 'third_party/yocto_genericsensor.php';
-
-		// init YAPI in callback mode to recieve inputs
-		YAPI::RegisterHub("callback");
-
 	}
 
 	public function post(){
+		// init YAPI in callback mode to recieve inputs
+		YAPI::RegisterHub("callback");
+
 		// get registered streams from the db
 		$streams_model = new Streams_model();
 		$streamlist = $streams_model->get_all_streams();
