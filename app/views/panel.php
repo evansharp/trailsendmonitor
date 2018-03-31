@@ -121,6 +121,7 @@
 	</div> <!-- end #layout -->
 
         <script src="<?php echo assets_url(); ?>js/libs/jquery-3.2.1.min.js"></script>
+		<script src="<?php echo assets_url(); ?>js/libs/moment.min.js"></script>
 		<script src="<?php echo assets_url(); ?>js/main.js?v=<?php echo time();?>"></script>
     </body>
 

@@ -7,11 +7,10 @@
 	<form action="<?php echo base_url(); ?>stream/raw/<?php echo $stream['id']; ?>" method="post">
 
 	<div class="pure-u-1-3">
-		Start Time: <input name="raw_fetch_start_time" type="datetime-local"  autocomplete required value="<?php if(isset( $range['start'] )) echo $range['start']; ?>">
+		Start Time: <input name="raw_fetch_start_time" type="datetime-local" autocomplete required  step="1" value="<?php if(isset( $range['start'] )) echo $range['start']; ?>">
 	</div>
 	<div class="pure-u-1-3">
-		End Time: <input name="raw_fetch_end_time" type="datetime-local" autocomplete required value="<?php if(isset($range['end'])) echo $range['end']; ?>">
-		<button id="fillnow" class="pure-button">Now</button>
+		End Time: <input name="raw_fetch_end_time" type="datetime-local" autocomplete required  step="1" value="<?php if(isset($range['end'])) echo $range['end']; ?>">
 	</div>
 	<div class="pure-u-1-3">
 		<select name="label" class="pure-input-1">
@@ -20,8 +19,19 @@
 		</select>
 		<input type="submit" value="Fetch" class="pure-button pure-button-primary align-right">
 	</div>
-
+	<div class="pure-u-1-3">
+		<button id="fill_start_day_ago" class="pure-button">A Day Ago</button>
+		<button id="fill_start_hour_ago" class="pure-button">An Hour Ago</button>
+		<button id="fill_start_now" class="pure-button">Now</button>
+	</div>
+	<div class="pure-u-1-3">
+		<button id="fill_end_day_ago" class="pure-button">A Day Ago</button>
+		<button id="fill_end_hour_ago" class="pure-button">An Hour Ago</button>
+		<button id="fill_end_now" class="pure-button">Now</button>
+	</div>
+	<div class="pure-u-1-3"></div>
 	</form>
+
 </div>
 <div class="pure-g">
 	<?php

@@ -16,11 +16,43 @@ $(function(){
 		return confirm("Are you sure you want to delete the stream AND ITS DATA?");
 	});
 
-	//enable 'now' button in raw data view_alerts
-	$('#fillnow').click(function(e){
+	//enable fill buttons in raw data view_alerts
+	$('#fill_end_now').click(function(e){
 		e.preventDefault();
-		alert(new Date().toJSON().slice(0,19));
-		$('input[name=raw_fetch_end_time]').val( new Date().toJSON().slice(0,19) );
+		//fill end with now
+		$('input[name=raw_fetch_end_time]').val( moment().format().slice(0,19) );
+
+	});
+	$('#fill_start_now').click(function(e){
+		e.preventDefault();
+		//fill start with now
+		$('input[name=raw_fetch_start_time]').val( moment().format().slice(0,19) );
+
+	});
+
+	$('#fill_end_hour_ago').click(function(e){
+		e.preventDefault();
+		//fill end with hour ago
+		$('input[name=raw_fetch_end_time]').val( moment().subtract(1, 'hours').format().slice(0,19) );
+
+	});
+	$('#fill_start_hour_ago').click(function(e){
+		e.preventDefault();
+		//fill start with hour ago
+		$('input[name=raw_fetch_start_time]').val( moment().subtract(1, 'hours').format().slice(0,19) );
+
+	});
+
+	$('#fill_end_day_ago').click(function(e){
+		e.preventDefault();
+		//fill end with day ago
+		$('input[name=raw_fetch_end_time]').val( moment().subtract(1, 'days').format().slice(0,19) );
+
+	});
+	$('#fill_start_day_ago').click(function(e){
+		e.preventDefault();
+		//fill start with day ago
+		$('input[name=raw_fetch_start_time]').val( moment().subtract(1, 'days').format().slice(0,19) );
 
 	});
 });
