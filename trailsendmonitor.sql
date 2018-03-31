@@ -8,7 +8,7 @@
 -- PHP Version: 7.0.27-0+deb9u1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET time_zone = "+00:00";
+SET time_zone = "-07:00";
 
 --
 -- Database: `trailsendmonitor`
