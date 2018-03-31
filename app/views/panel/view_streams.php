@@ -25,7 +25,7 @@
 				<td><?php echo $stream['name'];?></td>
 				<td><?php echo $stream['description'];?></td>
 				<td><?php echo $stream['device-serial'];?></td>
-				<td><?php echo $stream['shunt_resistance'];?></td>
+				<td><?php echo $stream['shunt_resistance'];?> Ohm</td>
 				<td>
 					<a href='<?php echo base_url(); ?>stream/delete/<?php echo $stream['id']; ?>' class='table-action delete-stream' title="Delete"> <i class='fa fa-fw fa-lg fa-trash-o'></i> </a>
 					<a href='<?php echo base_url(); ?>stream/edit/<?php echo $stream['id']; ?>' class='table-action' title="Edit">  <i class='fa fa-fw fa-lg fa-pencil'></i> </a>

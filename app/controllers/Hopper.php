@@ -35,10 +35,12 @@ class Hopper extends MY_Controller {
 
 				//validate module sending data against known streams using hardware id
 				$stream_id = null;
+				$stream_shunt_resistance = 0;
 
 				foreach( $streamlist as $stream){
 					if( $stream['device-serial'] == $device_serial &&  !$stream['disabled']){
 						$stream_id = $stream['id'];
+						$stream_shunt_resistance = $stream['shunt_resistance'];
 					}
 				}
 
@@ -51,12 +53,15 @@ class Hopper extends MY_Controller {
 				//create a 'now' in mysql Datetime format
 				$now = date('Y-m-d H:i:s'); // will manually write time stamp so value are "same time" over two writes.
 
-				// Volts -------------
-				$frame_voltage = $sensor -> get_signalValue(); //voltage drop in mV
-
-
 				// Amps --------------
 				$frame_amperage = $sensor -> get_currentValue(); // as configured in VirtualHub
+
+				// Volts -------------
+				$voltage_drop =  $sensor -> get_signalValue(); //in mV
+				$frame_voltage = $frame_amperage * $stream_shunt_resistance; // V = I * R
+
+
+
 
 				// Write to db!
 
