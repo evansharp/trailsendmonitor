@@ -57,8 +57,8 @@ class Hopper extends MY_Controller {
 				$frame_amperage = $sensor -> get_currentValue(); // as configured in VirtualHub
 
 				// Volts -------------
-				$voltage_drop =  $sensor -> get_signalValue(); //in mV
-				$frame_voltage = $frame_amperage * $stream_shunt_resistance; // V = I * R
+				$frame_voltage =  $sensor -> get_signalValue(); //actual voltage drop in mV
+				//$frame_voltage = $frame_amperage * $stream_shunt_resistance; // V = I * R
 
 
 
