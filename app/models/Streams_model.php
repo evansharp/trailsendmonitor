@@ -23,8 +23,8 @@ class Streams_model extends CI_Model {
             return $result -> result_array(); //returns results as assoc. array
         }
 
-        public function create_stream($name, $desc, $serial){
-            $data = ['name' => $name, 'description' => $desc, 'device-serial' => $serial];
+        public function create_stream($name, $desc, $serial, $shunt_resistance){
+            $data = ['name' => $name, 'description' => $desc, 'device-serial' => $serial, 'shunt_resistance' => $shunt_resistance];
             return $this->db->insert('streams', $data); //returns TRUE/ FALSE
         }
 
@@ -38,8 +38,8 @@ class Streams_model extends CI_Model {
             return true;
         }
 
-        public function edit_stream($id ,$name, $desc, $serial){
-            $data = ['name' => $name, 'description' => $desc, 'device-serial' => $serial];
+        public function edit_stream($id ,$name, $desc, $serial, $shunt_resistance){
+            $data = ['name' => $name, 'description' => $desc, 'device-serial' => $serial, 'shunt_resistance' => $shunt_resistance];
             $this->db->where('id', $id);
             return $this->db->update('streams', $data); //returns TRUE/ FALSE
         }

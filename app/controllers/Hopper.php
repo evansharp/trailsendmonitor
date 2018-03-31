@@ -52,7 +52,7 @@ class Hopper extends MY_Controller {
 				$now = date('Y-m-d H:i:s'); // will manually write time stamp so value are "same time" over two writes.
 
 				// Volts -------------
-				$frame_voltage = $sensor -> get_signalValue() * 1000; //convert direct reading in mV to V
+				$frame_voltage = $sensor -> get_signalValue(); //voltage drop in mV
 
 
 				// Amps --------------

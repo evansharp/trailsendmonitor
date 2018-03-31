@@ -9,6 +9,7 @@
 			<fieldset class="pure-group">
 				<input type="text" length="49" size="35" id="new_stream_name" name="new_stream_name" placeholder="Name">
 				<input type="text" length="49" size="35" id="new_stream_serial" name="new_stream_serial" placeholder="Device Serial Number">
+				<input type="number" length="4" size="4" id="new_stream_resistance" name="new_stream_resistance" step="0.001" placeholder="Shunt Resistence (ohms)">
 			</fieldset>
 			<fieldset class="pure-group">
 				<textarea id="new_stream_desc" name="new_stream_desc" cols="40" rows="4" placeholder="Description"></textarea>
