@@ -33,7 +33,7 @@
 	<?php
 	// if the range selection has been done, print the data in a tabel
 	if( $raw_data ): ?>
-	<div class="pure-u-1-3"><h3> <?php echo ucfirst($result_label); ?> Data</h3></div>
+	<div class="pure-u-1-3"><h3> Data</h3></div>
 	<div class="pure-u-1-3"></div>
 	<div class="pure-u-1-3"></div>
 
@@ -49,7 +49,7 @@
 			<?php foreach($raw_data as $datum):?>
 
 				<tr>
-					<td><?php echo date(DATE_RFC2822, strtotime( $datum['timestamp']));?></td>
+					<td><?php echo date('j F Y h:i:s A', strtotime( $datum['timestamp']));?></td>
 					<td><?php echo $datum['value'];?></td>
 				</tr>
 
