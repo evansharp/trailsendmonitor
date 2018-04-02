@@ -58,7 +58,7 @@ class Hopper extends MY_Controller {
 
 				// Volts -------------
 				$frame_voltage =  $sensor -> get_signalValue(); //actual voltage drop in mV
-				//$frame_voltage = $frame_amperage * $stream_shunt_resistance; // V = I * R
+
 
 
 

@@ -151,8 +151,18 @@ class Panel extends MY_Controller {
 		$this->load->view('panel', $template_data);
 	}
 
-	public function create_relations(){
-		$posteddata = isset( $_POST ) ? $_POST : NULL;
+	public function create_relation(){
+		$model = new Relations_model();
+
+		if(		isset($_POST['new_relation_name'])
+			&& 	isset($_POST['new_stream_desc'])
+			&& 	isset($_POST['new_stream_serial'])
+			&& 	isset($_POST['new_stream_resistance'])
+		){
+			$info_obj = null;
+			$created = $model -> create_relation( $info_obj );
+			redirect( base_url("relations") );
+		}
 
 		$data = [];
 
@@ -181,6 +191,22 @@ class Panel extends MY_Controller {
 
 
 		$this->load->view('panel', $template_data);
+	}
+
+	public function delete_relations( $evil_id ){
+		$model = new Relations_model();
+		$result = $model -> delete_relation( $evil_id );
+
+		redirect( base_url("relations") );
+
+	}
+
+	public function toggle_relation( $id ){
+		$model = new Relations_model();
+		$result = $model -> toggle_stream( $id );
+
+		redirect( base_url("relations") );
+
 	}
 	/* ===========================================================
 	                      Alerts

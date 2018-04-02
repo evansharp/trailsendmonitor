@@ -19,6 +19,8 @@ $route['streams'] = 'panel/streams';
 $route['relations'] = 'panel/relations';
 	$route['relations/create'] = 'panel/create_relations';
 	$route['relations/edit'] = 'panel/edit_relations';
+	$route['relations/delete/(:num)'] = 'panel/delete_relations/$1';
+	$route['relations/toggle/(:num)'] = 'panel/toggle_relations/$1';
 
 $route['alerts'] = 'panel/alerts';
 $route['settings'] = 'panel/settings';
