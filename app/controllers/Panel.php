@@ -48,8 +48,8 @@ class Panel extends MY_Controller {
 	public function create_stream(){
 		$model = new Streams_model();
 
-		if(  isset($_POST['new_stream_name']) && isset($_POST['new_stream_desc']) && isset($_POST['new_stream_serial']) && isset($_POST['new_stream_resistance']) ){
-			$created = $model -> create_stream( $_POST['new_stream_name'], $_POST['new_stream_desc'], $_POST['new_stream_serial'], $_POST['new_stream_resistance']);
+		if(  isset($_POST['new_stream_name']) && isset($_POST['new_stream_desc']) && isset($_POST['new_stream_serial']) && isset($_POST['new_stream_unit']) ){
+			$created = $model -> create_stream( $_POST['new_stream_name'], $_POST['new_stream_desc'], $_POST['new_stream_serial'], $_POST['new_stream_unit']);
 			redirect( base_url("streams") );
 		}
 
@@ -76,8 +76,8 @@ class Panel extends MY_Controller {
 	public function edit_stream( $id ){
 		$model = new Streams_model();
 
-		if(  isset($_POST['new_stream_name']) && isset($_POST['new_stream_desc']) && isset($_POST['new_stream_serial']) && isset($_POST['new_stream_resistance'] ) ){
-			$created = $model -> edit_stream($id, $_POST['new_stream_name'], $_POST['new_stream_desc'], $_POST['new_stream_serial'], $_POST['new_stream_resistance'] );
+		if(  isset($_POST['new_stream_name']) && isset($_POST['new_stream_desc']) && isset($_POST['new_stream_serial']) && isset($_POST['new_stream_unit'] ) ){
+			$created = $model -> edit_stream($id, $_POST['new_stream_name'], $_POST['new_stream_desc'], $_POST['new_stream_serial'], $_POST['new_stream_unit'] );
 
 			redirect( base_url("streams") );
 		}
