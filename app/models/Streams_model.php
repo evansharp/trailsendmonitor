@@ -81,25 +81,25 @@ class Streams_model extends CI_Model {
 
         public function get_stream_last_hour( $id, $label ){
             $this->db->select('timestamp, value');
-            $result = $this->db->get_where('data', ['stream-id' => $id, 'label' => $label, 'timestamp' => '> DATEADD(HOUR, -1, GETDATE())']);
+            $result = $this->db->get_where('data', ['stream-id' => $id, 'timestamp' => '> DATEADD(HOUR, -1, GETDATE())']);
             return $result -> result_array();
         }
 
         public function get_stream_last_12_hours( $id, $label ){
             $this->db->select('timestamp, value');
-            $result = $this->db->get_where('data', ['stream-id' => $id, 'label' => $label, 'timestamp' => '> DATEADD(HOUR, -12, GETDATE())']);
+            $result = $this->db->get_where('data', ['stream-id' => $id, 'timestamp' => '> DATEADD(HOUR, -12, GETDATE())']);
             return $result -> result_array();
         }
 
         public function get_stream_last_day( $id, $label ){
             $this->db->select('timestamp, value');
-            $result = $this->db->get_where('data', ['stream-id' => $id, 'label' => $label, 'timestamp' => '> DATEADD(HOUR, -24, GETDATE())']);
+            $result = $this->db->get_where('data', ['stream-id' => $id, 'timestamp' => '> DATEADD(HOUR, -24, GETDATE())']);
             return $result -> result_array();
         }
 
         public function get_stream_last_week( $id, $label ){
             $this->db->select('timestamp, value');
-            $result = $this->db->get_where('data', ['stream-id' => $id, 'label' => $label, 'timestamp' => '> DATEADD(WEEK, -1, GETDATE())']);
+            $result = $this->db->get_where('data', ['stream-id' => $id, 'timestamp' => '> DATEADD(WEEK, -1, GETDATE())']);
             return $result -> result_array();
         }
 
