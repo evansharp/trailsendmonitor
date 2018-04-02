@@ -98,15 +98,14 @@ class Panel extends MY_Controller {
 		$model = new Streams_model();
 		$data['stream'] = $model -> get_stream_by_id( $id );
 
-		if(  isset($_POST['raw_fetch_start_time']) && isset($_POST['raw_fetch_end_time']) && isset($_POST['label']) ){
+		if(  isset($_POST['raw_fetch_start_time']) && isset($_POST['raw_fetch_end_time']) ){
 
 			$start_time = date("Y-m-d H:i:s", strtotime( $_POST['raw_fetch_start_time'] )); //format for mysql query
 			$end_time = date("Y-m-d H:i:s", strtotime( $_POST['raw_fetch_end_time'] )); //format for mysql query
 
-			$data['raw_data'] = $model -> get_raw_stream( $id, $_POST['label'], $start_time, $end_time );
+			$data['raw_data'] = $model -> get_raw_stream( $id, $start_time, $end_time );
 			$data['range']['start'] = $_POST['raw_fetch_start_time'];
 			$data['range']['end'] = $_POST['raw_fetch_end_time'];
-			$data['result_label'] = $_POST['label'];
 		}else{
 			$data['raw_data'] = [];
 			$data['range'] = [];

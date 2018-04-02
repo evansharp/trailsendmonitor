@@ -13,10 +13,6 @@
 		End Time: <input name="raw_fetch_end_time" type="datetime-local" autocomplete required  step="1" value="<?php if(isset($range['end'])) echo $range['end']; ?>">
 	</div>
 	<div class="pure-u-1-3">
-		<select name="label" class="pure-input-1">
-			<option value="volts">Volts</option>
-			<option value="amps">Amps</option>
-		</select>
 		<input type="submit" value="Fetch" class="pure-button pure-button-primary align-right">
 	</div>
 	<div class="pure-u-1-3">

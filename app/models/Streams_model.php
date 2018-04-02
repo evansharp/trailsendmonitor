@@ -72,9 +72,9 @@ class Streams_model extends CI_Model {
                 }
         }
 
-        public function get_raw_stream($id, $label, $time_start, $time_end){
+        public function get_raw_stream($id, $time_start, $time_end){
             $this->db->select('timestamp, value');
-	        $result = $this->db->get_where('data', ['stream-id' => $id, 'label' => $label, 'timestamp > ' => $time_start, 'timestamp <' => $time_end]);
+	        $result = $this->db->get_where('data', ['stream-id' => $id, 'timestamp > ' => $time_start, 'timestamp <' => $time_end]);
 
             return $result -> result_array();
         }
@@ -109,8 +109,8 @@ class Streams_model extends CI_Model {
         //
         //-------------------------------------------------
 
-        public function write_frame( $id , $ts, $label, $value ){
-			$data = ['stream-id' => $id, 'timestamp' => $ts, 'label' => $label, 'value' => $value];
+        public function write_frame( $id, $ts, $value ){
+			$data = ['stream-id' => $id, 'timestamp' => $ts, 'value' => $value];
 			return $this->db->insert('data', $data); //returns TRUE/ FALSE
         }
 

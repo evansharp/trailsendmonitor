@@ -35,12 +35,10 @@ class Hopper extends MY_Controller {
 
 				//validate module sending data against known streams using hardware id
 				$stream_id = null;
-				$stream_shunt_resistance = 0;
 
 				foreach( $streamlist as $stream){
 					if( $stream['device-serial'] == $device_serial &&  !$stream['disabled']){
 						$stream_id = $stream['id'];
-						$stream_shunt_resistance = $stream['shunt_resistance'];
 					}
 				}
 
@@ -51,13 +49,13 @@ class Hopper extends MY_Controller {
 				}
 
 				//create a 'now' in mysql Datetime format
-				$now = date('Y-m-d H:i:s'); // will manually write time stamp so value are "same time" over two writes.
+				$now = date('Y-m-d H:i:s'); // will manually write time stamp so time is closer to recorded time.
 
-				// Amps --------------
-				$frame_amperage = $sensor -> get_currentValue(); // as configured in VirtualHub
+				// Value --------------
+				$frame_value = $sensor -> get_currentValue(); // as configured in VirtualHub
 
-				// Volts -------------
-				$frame_voltage =  $sensor -> get_signalValue(); //actual voltage drop in mV
+				// Actual -------------
+				//$frame_signal =  $sensor -> get_signalValue(); //actual voltage drop in mV for milivolt-rx
 
 
 
@@ -65,16 +63,10 @@ class Hopper extends MY_Controller {
 
 				// Write to db!
 
-				if( !$streams_model -> write_frame( $stream_id, $now, 'volts', $frame_voltage ) ){
-					die("There was an error writing VOLTS of ". $device_name ." to the database.");
+				if( !$streams_model -> write_frame( $stream_id, $now, $frame_value ) ){
+					die("There was an error writing frame for ". $device_name ." to the database.");
 				}else{
-					echo "Wrote " . $frame_voltage ." V to the database for ". $device_name . " (". $device_serial .") at ". $now;
-				}
-
-				if( !$streams_model -> write_frame( $stream_id, $now, 'amps', $frame_amperage ) ){
-					die("There was an error writing AMPS of ". $device_name ."  to the database.");
-				}else{
-					echo "Wrote " . $frame_amperage ." A to the database for ". $device_name . " (". $device_serial .") at ". $now;
+					echo "Wrote " . $frame_value ." to the database for ". $device_name . " (". $device_serial .") at ". $now;
 				}
 
 				echo "<br>";
