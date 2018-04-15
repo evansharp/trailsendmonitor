@@ -24,11 +24,10 @@ $route['relations'] = 'panel/relations';
 
 $route['alerts'] = 'panel/alerts';
 $route['settings'] = 'panel/settings';
+	$route['settings/update'] = 'panel/update_setting';
 
 // Route for the input hopper, a controller that recieves POSTs from Yoctopuce's VirtualHub
-// on localhost. The wildcard URI segment is used to delineate which device is sending the data.
-// Device name and posted value are contained in the POST array
-//
-// MAKE SURE the serial numbers of configured devices match the hopper URI configured in VirtualHub!
+// on localhost.
+// Device names and posted values are contained in the POST array
 $route['hopper/debug'] = 'hopper/debug';
 $route['hopper/(:any)'] = 'hopper/$1';

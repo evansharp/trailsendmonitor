@@ -127,7 +127,6 @@ class Panel extends MY_Controller {
 		$result = $model -> toggle_stream( $stream_id );
 
 		redirect( base_url("streams") );
-
 	}
 
 
@@ -197,7 +196,6 @@ class Panel extends MY_Controller {
 		$result = $model -> delete_relation( $evil_id );
 
 		redirect( base_url("relations") );
-
 	}
 
 	public function toggle_relation( $id ){
@@ -205,7 +203,6 @@ class Panel extends MY_Controller {
 		$result = $model -> toggle_stream( $id );
 
 		redirect( base_url("relations") );
-
 	}
 	/* ===========================================================
 	                      Alerts
@@ -230,7 +227,8 @@ class Panel extends MY_Controller {
 	=============================================================*/
 
 	public function settings(){
-		$data = [];
+		$model = new Settings_model();
+		$data['settings'] = $model -> get_all_settings();
 
 
 		$template_data = [
@@ -244,6 +242,13 @@ class Panel extends MY_Controller {
 		$this->load->view('panel', $template_data);
 	}
 
+	public function update_setting(){
+		if( isset($_POST['setting_name']) && isset($_POST['setting_value'])){
+			$model = new Settings_model();
+			$result = $model -> edit_setting( $_POST['setting_name'], $_POST['setting_value'] );
+		}
+		redirect( base_url("settings") );
+	}
 
 	/* ===========================================================
 	                      Helpers
