@@ -249,6 +249,9 @@ class Panel extends MY_Controller {
 		}
 		redirect( base_url("settings") );
 	}
+	public function reset_battery_net_ah(){
+		redirect( base_url("settings") );
+	}
 
 	/* ===========================================================
 	                      Helpers
