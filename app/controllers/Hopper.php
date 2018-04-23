@@ -20,7 +20,6 @@ class Hopper extends MY_Controller {
 		$streams_model = new Streams_model();
 		$streamlist = $streams_model->get_all_streams();
 
-
         $data = isset( $_POST ) ? $_POST : NULL;
 
 		//get the first available sensor to initiate an iterator in the API
@@ -57,12 +56,7 @@ class Hopper extends MY_Controller {
 				// Actual -------------
 				//$frame_signal =  $sensor -> get_signalValue(); //actual voltage drop in mV for milivolt-rx
 
-
-
-
-
 				// Write to db!
-
 				if( !$streams_model -> write_frame( $stream_id, $now, $frame_value ) ){
 					die("There was an error writing frame for ". $device_name ." to the database.");
 				}else{

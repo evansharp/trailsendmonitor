@@ -2,10 +2,10 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 //online dev
-//$config['base_url'] = 'https://evansharp.ca/trailsendmonitor/';
+//$config['base_url'] = '//evansharp.ca/trailsendmonitor/';
 
 //local (pi) implementation
-$config['base_url'] = 'http://10.0.1.55/trailsendmonitor/';
+$config['base_url'] = '//10.0.1.55/trailsendmonitor/';
 
 
 $config['index_page'] = 'index.php';
