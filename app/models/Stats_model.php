@@ -2,7 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Stats_model extends CI_Model {
-        
+
 
         public function __construct() {
 
@@ -11,6 +11,10 @@ class Stats_model extends CI_Model {
             //run archiving tasks
             self::_cleanup();
 
+        }
+
+        public function get_all_stats(){
+            return [];
         }
 
 

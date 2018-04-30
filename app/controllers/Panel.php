@@ -129,6 +129,23 @@ class Panel extends MY_Controller {
 		redirect( base_url("streams") );
 	}
 
+	/* ===========================================================
+						  Stats
+	=============================================================*/
+	public function stats(){
+		$model = new Stats_model();
+		$data['stats'] = $model -> get_all_stats();
+
+		$template_data = [
+					'title'	=> 'Stats',
+					'active_nav' => 'stats',
+					'alerts'=> $this->get_alerts(),
+					'pane' 	=> $this->load->view('panel/view_stats',$data,TRUE)
+				];
+
+
+		$this->load->view('panel', $template_data);
+	}
 
 	/* ===========================================================
 	                      Relations
@@ -250,6 +267,8 @@ class Panel extends MY_Controller {
 		redirect( base_url("settings") );
 	}
 	public function reset_battery_net_ah(){
+
+
 		redirect( base_url("settings") );
 	}
 
