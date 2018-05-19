@@ -16,6 +16,8 @@ $route['streams'] = 'panel/streams';
 	$route['stream/raw/(:num)'] = 'panel/view_raw_stream/$1';
 	$route['stream/toggle/(:num)'] = 'panel/toggle_stream/$1';
 
+$route['stats'] = "panel/stats";
+
 $route['relations'] = 'panel/relations';
 	$route['relations/create'] = 'panel/create_relations';
 	$route['relations/edit'] = 'panel/edit_relations';

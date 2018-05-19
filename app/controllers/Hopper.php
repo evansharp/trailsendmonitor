@@ -20,6 +20,8 @@ class Hopper extends MY_Controller {
 		$streams_model = new Streams_model();
 		$streamlist = $streams_model->get_all_streams();
 
+		// instantiate stats model
+		$stats_model = new Stats_model();
 
         $data = isset( $_POST ) ? $_POST : NULL;
 
@@ -39,6 +41,7 @@ class Hopper extends MY_Controller {
 				foreach( $streamlist as $stream){
 					if( $stream['device-serial'] == $device_serial &&  !$stream['disabled']){
 						$stream_id = $stream['id'];
+						$stream_name = $stream['name'];
 					}
 				}
 
@@ -57,10 +60,6 @@ class Hopper extends MY_Controller {
 				// Actual -------------
 				//$frame_signal =  $sensor -> get_signalValue(); //actual voltage drop in mV for milivolt-rx
 
-
-
-
-
 				// Write to db!
 
 				if( !$streams_model -> write_frame( $stream_id, $now, $frame_value ) ){
@@ -70,7 +69,19 @@ class Hopper extends MY_Controller {
 				}
 
 				echo "<br>";
-				echo "--------------------------------------------------------";
+				echo "#";
+				echo "<br>";
+
+				//update crunched stats
+
+				//battery state of charge
+				if( $stream_name == "battery_sens" ){
+					$stats_model -> crunch_batt_charge( $frame_value );
+				}
+
+
+				echo "<br>";
+				echo "-------------------------------------------------------->";
 				echo "<br>";
 
 				//get the next available sensor or a null pointer if the last one is done

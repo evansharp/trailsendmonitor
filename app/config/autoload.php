@@ -134,6 +134,6 @@ $autoload['language'] = array();
 */
 $autoload['model'] = array(	'Streams_model' => 'streams',
 							'Relations_model' => 'relations',
-							'Stats_model' => 'stats',
 							'Settings_model' => 'settings',
+							'Stats_model' => 'stats',
 							'Alerts_model' => 'alerts');

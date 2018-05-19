@@ -45,7 +45,12 @@
                 	    </li>-->
                 	</ul>
                 </li>
-                <li class="pure-menu-item pure-menu-has-children <?php if($active_nav == 'relations') echo 'active';?>">
+				<li class="pure-menu-item pure-menu-has-children <?php if($active_nav == 'stats') echo 'active';?>">
+                	<a href="<?php echo base_url(); ?>stats" class="pure-menu-link">
+                		<i class="fa fa-fw fa-lg fa-calculator"></i>Stats
+                	</a>
+                </li>
+				<li class="pure-menu-item pure-menu-has-children <?php if($active_nav == 'relations') echo 'active';?>">
                 	<a href="<?php echo base_url(); ?>relations" class="pure-menu-link">
                 		<i class="fa fa-fw fa-lg fa-line-chart"></i>Relations
                 	</a>
