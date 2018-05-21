@@ -20,6 +20,12 @@ class Hopper extends MY_Controller {
 		$streams_model = new Streams_model();
 		$streamlist = $streams_model->get_all_streams();
 
+<<<<<<< HEAD
+=======
+		// instantiate stats model
+		$stats_model = new Stats_model();
+
+>>>>>>> db01c2c3d916483aebd2c749a3ef5947f3b6c612
         $data = isset( $_POST ) ? $_POST : NULL;
 
 		//get the first available sensor to initiate an iterator in the API
@@ -38,6 +44,7 @@ class Hopper extends MY_Controller {
 				foreach( $streamlist as $stream){
 					if( $stream['device-serial'] == $device_serial &&  !$stream['disabled']){
 						$stream_id = $stream['id'];
+						$stream_name = $stream['name'];
 					}
 				}
 
@@ -64,7 +71,19 @@ class Hopper extends MY_Controller {
 				}
 
 				echo "<br>";
-				echo "--------------------------------------------------------";
+				echo "#";
+				echo "<br>";
+
+				//update crunched stats
+
+				//battery state of charge
+				if( $stream_name == "battery_sens" ){
+					$stats_model -> crunch_batt_charge( $frame_value );
+				}
+
+
+				echo "<br>";
+				echo "-------------------------------------------------------->";
 				echo "<br>";
 
 				//get the next available sensor or a null pointer if the last one is done
